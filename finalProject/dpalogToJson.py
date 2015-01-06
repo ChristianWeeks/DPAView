@@ -98,16 +98,16 @@ def dateToTimeStamp(dateString):
 	"""Converts a date string to a timestamp"""
 	return time.mktime(datetime.datetime.strptime(dateString, "%Y-%m-%d_%H-%M-%S").timetuple())
 
-#Used to organize data by time.
-class monthBin:
-	def __init__(self, startDate):
-		self.startTimeStamp = startDate
-		self.daysBin = []
-		
-
-	#determines what bin to put the task in
-	def sortTask(self):
-		stuff = True
+##Used to organize data by time.
+#class monthBin:
+#	def __init__(self, startDate):
+#		self.startTimeStamp = startDate
+#		self.daysBin = []
+#		
+#
+#	#determines what bin to put the task in
+#	def sortTask(self):
+#		stuff = True
 
 
 class dayBin:
@@ -118,6 +118,7 @@ class dayBin:
 		self.totalRunTime = 0
 		self.secondsPerTask = 0
 		self.delayPerTask = 0
+		self.totalTasks = 0
 		self.taskIDs= []
 	#contains a list of task IDs performed this day
 	#contains all summary information on tasks done this day
@@ -128,8 +129,9 @@ class dayBin:
 		self.update()
 
 	def update(self):
-		self.secondsPerTask = float(self.totalRunTime) / float(len(self.taskIDs))
-		self.delayPerTask = float(self.totalDelay) / float(len(self.taskIDs))
+		self.totalTasks = len(self.taskIDs);
+		self.secondsPerTask = float(self.totalRunTime) / float(self.totalTasks)
+		self.delayPerTask = float(self.totalDelay) / float(self.totalTasks)
 
 
 #class User:

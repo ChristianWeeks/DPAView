@@ -179,6 +179,10 @@ graphObject.prototype.setYAttr = function (attrString, drawFunction){
 				"xPos": this.x + (this.time_step / 2) + (j * this.time_step),
 				"yPos": this.mapYValToGraph(this.data[i]["dayBins"][j][this.yAttr])
 			};
+			
+			console.log(this.yAttr);
+			console.log(this.mapYValToGraph(this.data[i]["dayBins"][j][this.yAttr]))
+			console.log(this.data[i]["dayBins"][j][this.yAttr])
 			//This will be used later to instantly access time data
 			if (this.firstTimeData == null){
 				this.firstTimeData = currObj;
